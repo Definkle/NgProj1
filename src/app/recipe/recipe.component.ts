@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { RecipeService } from '../services/recipe.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe',
@@ -10,16 +11,19 @@ import { RecipeService } from '../services/recipe.service';
 })
 export class RecipeComponent implements OnInit {
   recipe: Recipe;
+  paramsSubscription: Subscription;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.recipeSelected
-      .subscribe(
-        (recipe: Recipe) => {
-          this.recipe = recipe
-        }
-      );
+    this.paramsSubscription = this.recipeService.recipeSelected.subscribe(
+      (recipe: Recipe) => {
+        this.recipe = recipe
+      }
+    );
+  }
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from 'src/app/services/shopping-list.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -11,11 +11,12 @@ import { ShoppingListService } from 'src/app/services/shopping-list.service';
 export class ShoppingListEditComponent implements OnInit {
   @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
   @ViewChild('amountInput', { static: false }) amountInputRef: ElementRef;
-  
+  paramsSubscription: Subscription;
+
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit(): void {
-    this.shoppingListService.selectedIngredient
+    this.paramsSubscription = this.shoppingListService.selectedIngredient
       .subscribe(
         (ingredient: Ingredient) => {
           this.nameInputRef.nativeElement.value = ingredient.name
@@ -30,6 +31,10 @@ export class ShoppingListEditComponent implements OnInit {
       this.amountInputRef.nativeElement.value
     );
     this.shoppingListService.addIngredient(ingredient);
+  }
+
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
   }
 
 }

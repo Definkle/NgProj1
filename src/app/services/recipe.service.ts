@@ -21,7 +21,7 @@ export class RecipeService {
     new Recipe(
       "A Test Recipe",
       "This is just a test",
-      "https://cdn.pixabay.com/photo/2016/01/05/17/51/dog-1123016_960_720.jpg",
+      "https://pluspng.com/img-png/burger-hd-png-burger-png-hd-png-image-556.png",
       [
         new Ingredient('Meat', 2),
         new Ingredient('Cheese',4)
@@ -32,6 +32,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(id: number) {
+    return this.recipes[id];
   }
 
   addIngredients(ingredients: Ingredient[]) {
