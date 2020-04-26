@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class ErrorPageComponent implements OnInit {
   errorMessage: string;
-  paramsSubscription: Subscription;
+  private paramsSubscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 

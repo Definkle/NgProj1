@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[];
-  paramsSubscription: Subscription;
+  private paramsSubscription: Subscription;
 
   constructor(private shoppingListService: ShoppingListService) {}
 
@@ -24,7 +24,7 @@ export class ShoppingListComponent implements OnInit {
   }
   
   onSelect(ingredient) {
-    this.shoppingListService.selectedIngredient.emit(ingredient);
+    this.shoppingListService.selectedIngredient.next(ingredient);
   }
 
   ngOnDestroy() {

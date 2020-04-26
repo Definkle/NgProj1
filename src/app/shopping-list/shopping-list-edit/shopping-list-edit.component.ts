@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class ShoppingListEditComponent implements OnInit {
   @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
   @ViewChild('amountInput', { static: false }) amountInputRef: ElementRef;
-  paramsSubscription: Subscription;
+  private paramsSubscription: Subscription;
 
   constructor(private shoppingListService: ShoppingListService) { }
 

@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class RecipeEditComponent implements OnInit, OnDestroy {
   id: number;
   editMode = false;
-  paramsSubscription: Subscription;
+  private paramsSubscription: Subscription;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
