@@ -23,8 +23,8 @@ export class ShoppingListComponent implements OnInit {
     );
   }
   
-  onSelect(ingredient) {
-    this.shoppingListService.selectedIngredient.next(ingredient);
+  onSelect(index: number) {
+    this.shoppingListService.selectedIngredient.next(index);
   }
 
   ngOnDestroy() {
