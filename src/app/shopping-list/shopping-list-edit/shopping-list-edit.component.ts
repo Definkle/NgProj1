@@ -11,7 +11,7 @@ import { NgForm } from "@angular/forms";
 })
 export class ShoppingListEditComponent implements OnInit, OnDestroy {
   @ViewChild("f", { static: false }) slForm: NgForm;
-  subscription: Subscription;
+  paramsSubscription: Subscription;
   editMode = false;
   selectedItem: number;
   selectedIngredient: Ingredient;
@@ -19,7 +19,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
-    this.subscription = this.shoppingListService.selectedIngredient.subscribe(
+    this.paramsSubscription = this.shoppingListService.selectedIngredient.subscribe(
       (index: number) => {
         this.editMode = true;
         this.selectedItem = index;
@@ -60,6 +60,6 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.paramsSubscription.unsubscribe();
   }
 }
