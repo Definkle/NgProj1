@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { RecipeComponent } from "./recipe/recipe.component";
@@ -31,7 +31,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     RecipeEditComponent,
     ErrorPageComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
