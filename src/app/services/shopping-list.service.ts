@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
-import { Subject } from 'rxjs';
+import { Subject } from "rxjs";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
   selectedIngredient = new Subject<Number>();
   private ingredients: Ingredient[] = [
     new Ingredient("Apples", 5),
-    new Ingredient("Tomatoes", 10)
+    new Ingredient("Tomatoes", 10),
   ];
-  constructor() { }
+  constructor() {}
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.next(this.ingredients.slice());
@@ -39,5 +39,4 @@ export class ShoppingListService {
     this.ingredients[index] = newIngredient;
     this.ingredientsChanged.next(this.ingredients.slice());
   }
-
 }
