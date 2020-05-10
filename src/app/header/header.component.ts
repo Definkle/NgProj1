@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { DataStorageService } from "../services/data-storage.service";
 
 @Component({
   selector: "app-header",
@@ -7,7 +8,15 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HeaderComponent implements OnInit {
   isMenuCollapsed = true;
-  constructor() {}
+  constructor(private dataStorageService: DataStorageService) {}
 
   ngOnInit(): void {}
+
+  saveData() {
+    this.dataStorageService.storeRecipes();
+  }
+
+  getData() {
+    this.dataStorageService.getRecipes().subscribe();
+  }
 }
